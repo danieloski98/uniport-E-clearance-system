@@ -8,5 +8,9 @@ if (environment.production) {
   enableProdMode();
 }
 
+platformBrowserDynamic().onDestroy(() => {
+  console.log('destroyed');
+});
+
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

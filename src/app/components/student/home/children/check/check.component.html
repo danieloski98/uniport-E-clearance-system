@@ -1,0 +1,46 @@
+<div class="parent">
+  <div class="flex flex-row justify-center">
+    <div class="container bg-blue-400 h-auto text-center py-8 rounded-sm">
+      <p class="text-white">Check Your name</p>
+      <form [formGroup]="searchString" class="mt-4">
+        <input type="text"  min="14" max="14" formControlName="searchValue" name="searchString" placeholder="enter your mat_no" class="h-10 p-4 w-auto rounded-sm" id="">
+        <button  (click)="checkUser()" class="w-24 p-2 mt-4 rounded-sm shadow-lg text-white bg-blue-800">Search</button>
+      </form>
+      <div *ngIf="searchString.touched && searchString.get('searchValue').hasError('required')" class=" w-auto flex flex-row justify-center">
+        <div class="text-center mt-2 text-red-400">
+            This field is required
+        </div>
+      </div>
+
+      <div *ngIf="searchString.touched && searchString.get('searchValue').hasError('minlength')" class=" w-auto flex flex-row justify-center">
+          <div class="text-center mt-2 text-red-400">
+              The minimium length for this field is 13 charaters
+          </div>
+      </div>
+
+      <div *ngIf="searchString.touched && searchString.get('searchValue').hasError('maxlength')" class=" w-auto flex flex-row justify-center">
+          <div class="text-center mt-2 text-red-400">
+              The maximium length for this field is 13 charaters
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="error" class="flex flex-row justify-center">
+    <div class="container bg-red-600 h-auto py-4 text-center text-white w-64 rounded-sm mt-2">
+      Your name is not on the graduation list
+    </div>
+  </div>
+
+  <div  *ngIf="success" class="flex flex-row justify-center">
+      <div @success class="container bg-green-400 h-64 w-64 rounded-sm mt-2 text-white">
+        <p class="ml-4 mt-4 mb-4 text-white">{{ data.fullname.toUpperCase() }}</p>
+        <hr>
+        <p class="ml-4 mt-4">Matriculation number: {{ data.mat_no.toUpperCase() }}</p>
+        <p class="ml-4 mt-4">Department: {{ data.department.toUpperCase() }}</p>
+        <p class="ml-4 mt-4">Faculty: {{ data.faculty.toUpperCase() }}</p>
+        <button  (click)="checkUser()" class="w-auto p-2 mt-4 ml-4 rounded-sm shadow-lg text-white bg-green-600">Proceed to next step</button>
+      </div>
+    </div>
+</div>
