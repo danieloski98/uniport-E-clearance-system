@@ -6,6 +6,10 @@ import { AuthComponent } from './children/auth/auth.component';
 import { IndexComponent } from './children/index/index.component';
 import { UploadstudentComponent } from './children/uploadstudent/uploadstudent.component';
 import { GraduantsComponent } from './children/graduants/graduants.component';
+import { RegisterComponent } from './children/register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -24,6 +28,10 @@ const routes: Routes = [
       {
         path: 'auth',
         component: AuthComponent
+      },
+      {
+        path: 'signup',
+        component: RegisterComponent,
       }
     ],
   }
@@ -36,10 +44,14 @@ const routes: Routes = [
     AuthComponent,
     IndexComponent,
     UploadstudentComponent,
-    GraduantsComponent
+    GraduantsComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   exports: [

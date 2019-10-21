@@ -1,1 +1,46 @@
-<p>index works! {{ title }}</p>
+<div class="parent ">
+  <div class="w-screen h-16 shadow bg-white flex justify-between pl-4 pr-4">
+    <div>
+      <h1 class="font-raleway mt-5 text-black">
+        Computer Science  E-Clearance System
+      </h1>
+    </div>
+
+    <div>
+      <button class="w-40 mt-3 h-10 rounded bg-blue-600 shadow text-white hover:bg-blue-500 focus:shadow-outline">
+        View List
+      </button>
+    </div>
+  </div>
+  <div class="flex justify-center mt-10">
+    <div class="flex flex-col">
+      <div class="img-box flex justify-center">
+        <img src="../../../../../assets/images/uniport.jpg" width="200" class="" alt="">
+      </div>
+      <div>
+        <h1 class="mt-4 text-black font-raleway font-bold text-xl">
+          Add student to the graduation list
+        </h1>
+      </div>
+      <div class="w-auto flex justify-center">
+        <form [formGroup]="form" class="flex flex-col">
+          <input type="text"
+          formControlName="fullname"
+          placeholder="Student full name"
+          class="border border-blue-400 w-64 h-10 rounded pl-4 pr-4 mt-4 focus:shadow-outline">
+
+          <input type="text"
+          formControlName="mat_no"
+          placeholder="Enter Mat-no."
+          class="border border-blue-400 w-64 h-10 rounded pl-4 pr-4 mt-4 focus:shadow-outline">
+
+          <button
+          class="w-64 bg-blue-600 rounded shadow h-10 text-white mt-4 focus:shadow-outline hover:bg-blue-500 active:bg-blue-800"
+          (click)="submit()">
+          Add
+        </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

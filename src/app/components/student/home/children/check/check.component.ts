@@ -25,9 +25,11 @@ export class CheckComponent implements OnInit {
   success: boolean = null;
   searchString: FormGroup;
   data: IData = null;
+  checking: boolean = null;
   constructor(private http: HttpClient, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.checking = false;
     this.searchString = this.fb.group({
       searchValue: ['', [
         Validators.required,
@@ -43,22 +45,28 @@ export class CheckComponent implements OnInit {
   }
 
   checkUser(): void {
+    this.checking = true;
     if (this.searchString.invalid ) {
       alert('Can\'t submit. check the field and try again ');
+      this.checking = false;
     } else {
       const clone = this.searchString.get('searchValue').value.replace('/', '_').toLowerCase();
+      // tslint:disable-next-line: prefer-const
       let search = clone;
+      console.log(search);
       this.http.get(`http://localhost:3000/student/${search}`)
     .subscribe(
       (data: ISearchResponse) => {
+        this.checking = false;
         this.success = true;
         this.error = false;
         console.log(data.data);
-        // this.searchString.get('searchValue').patchValue('');
-        // this.searchString.updateValueAndValidity();
+        this.searchString.get('searchValue').patchValue('');
+        this.searchString.updateValueAndValidity();
         this.data = data.data[0];
       },
       (error) => {
+        this.checking = false;
         this.error = true;
         this.success = false;
       },
