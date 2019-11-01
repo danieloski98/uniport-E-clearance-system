@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
+import { ToolbarService } from './states/toolbar.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { reducers, metaReducers } from './reducers';
       }
     }),
   ],
-  providers: [],
+  providers: [
+    ToolbarService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

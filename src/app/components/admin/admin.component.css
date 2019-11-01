@@ -1,0 +1,17 @@
+.parent{
+
+
+}
+
+.main-body{
+  width: 100%;
+  height: 600px;
+}
+
+.second{
+  width: 100%;
+}
+
+.active{
+  color: white !important;
+}

@@ -1,0 +1,17 @@
+<div class="parent">
+    <div class="flex justify-center">
+      <div>
+        <div *ngIf="nothing" class="flex justify-center mt-10">
+          <div>
+              <img src="../../../../../assets/images/not.svg" width="300" alt="">
+              <h1 class="text-center text-gray-600 font-raleway text-2xl mt-4">No student have made payment</h1>
+          </div>
+        </div>
+        <div *ngIf="!nothing" class="w-68 h-64 ">
+          <div class="w-auto" *ngFor="let student of formStudent">
+              <app-clearedchip [student]="student" ></app-clearedchip>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

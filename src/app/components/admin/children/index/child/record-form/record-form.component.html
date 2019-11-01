@@ -1,0 +1,80 @@
+<div class="parent pb-10">
+
+    <div class="flex justify-end">
+        <button
+        (click)="submit()"
+        class="p-2 text-white text-sm font-raleway disabled:bg-blue-200 rounded shadow bg-blue-400 w-20">Add</button>
+      </div>
+
+  <form [formGroup]="record">
+
+    <div class="flex ">
+
+        <div>
+          <input formControlName="user" type="text" placeholder="Mat_no." class="w-64 h-10 pl-2 pr-2 rounded border border-blue-400  placeholder-black font-raleway">
+        </div>
+
+      <div>
+        <select formControlName="level" name="" class="w-64 h-10 pl-2 pr-2 border border-blue-400 rounded bg-white ml-4 font-raleway" id="">
+          <option disabled selected value="">Level</option>
+          <option value="100">100</option>
+          <option value="200">200</option>
+          <option value="300">300</option>
+          <option value="400">400</option>
+        </select>
+      </div>
+
+      <div>
+          <select formControlName="semester" name="" class="w-64 h-10 pl-2 pr-2 border border-blue-400 rounded bg-white ml-4 font-raleway" id="">
+            <option disabled selected value="">Semester</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+      </div>
+
+    </div>
+
+    <div formArrayName="courses" class="mt-4">
+
+      <div class="flex justify-between">
+        <div class="pt-3">
+            <h1 class="text-lg font-raleway">Courses</h1>
+        </div>
+        <div *ngIf="!hideBtn">
+            <button (click)="addCourse()" class="p-2 bg-blue-400 rounded shadow text-white font-raleway text-sm">Add course</button>
+        </div>
+      </div>
+
+      <div class="flex mt-4" *ngFor="let course of courses.controls; let i=index" [formGroupName]="i">
+
+          <div>
+              <input formControlName="title" type="text" placeholder="course title" class="w-64 h-10 pl-2 pr-2 rounded border border-blue-400  placeholder-black font-raleway ">
+          </div>
+
+          <div>
+              <input formControlName="code" type="text" placeholder="course code" class="w-64 h-10 pl-2 pr-2 rounded border border-blue-400  placeholder-black font-raleway ml-2">
+          </div>
+
+          <div>
+              <input formControlName="score" type="text" placeholder="score" class="w-64 h-10 pl-2 pr-2 rounded border border-blue-400  placeholder-black font-raleway ml-2">
+          </div>
+
+          <div>
+              <input formControlName="grade" type="text" placeholder="grade" class="w-64 h-10 pl-2 pr-2 rounded border border-blue-400  placeholder-black font-raleway ml-2">
+          </div>
+
+          <div>
+            <button
+            (click)="deleteCourse(i)"
+            class="p-2 rounded bg-red-600 ml-2">
+              <img src="../../../../../../../assets/icons/trash-2.svg" alt="">
+            </button>
+          </div>
+
+      </div>
+
+
+    </div>
+
+  </form>
+</div>

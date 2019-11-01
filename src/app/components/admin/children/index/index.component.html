@@ -1,39 +1,55 @@
-<div class="parent ">
-  <div class="w-screen h-16 shadow bg-white flex justify-between pl-4 pr-4">
-    <div>
-      <h1 class="font-raleway mt-5 text-black">
-        Computer Science  E-Clearance System
-      </h1>
+<div class="parent pr-6 pt-4">
+  <div class="flex justify-end">
+    <div class="mr-2">
+        <button
+        [routerLink]="['/admin/list']" routerLinkActive="router-link-active"
+        class="p-2 bg-blue-500 rounded shadow text-white text-sm">View list</button>
     </div>
-
     <div>
-      <button class="w-40 mt-3 h-10 rounded bg-blue-600 shadow text-white hover:bg-blue-500 focus:shadow-outline">
-        View List
-      </button>
+      <button
+      [routerLink]="['/admin/record']" routerLinkActive="router-link-active"
+      class="p-2 bg-green-500 rounded shadow text-white text-sm">Add record</button>
     </div>
   </div>
+
   <div class="flex justify-center mt-10">
     <div class="flex flex-col">
-      <div class="img-box flex justify-center">
-        <img src="../../../../../assets/images/uniport.jpg" width="200" class="" alt="">
-      </div>
-      <div>
-        <h1 class="mt-4 text-black font-raleway font-bold text-xl">
-          Add student to the graduation list
-        </h1>
-      </div>
+
       <div class="w-auto flex justify-center">
         <form [formGroup]="form" class="flex flex-col">
           <input type="text"
           formControlName="fullname"
           placeholder="Student full name"
           class="border border-blue-400 w-64 h-10 rounded pl-4 pr-4 mt-4 focus:shadow-outline">
-
+          <small
+          *ngIf="form.get('fullname').touched && form.get('fullname').hasError('required')"
+          class="text-red-600">
+          this field is required
+          </small>
+          <small
+          *ngIf="form.get('fullname').touched && form.get('fullname').hasError('minlength')"
+          class="text-red-600">
+          minimium length is 8 characters
+          </small>
           <input type="text"
           formControlName="mat_no"
           placeholder="Enter Mat-no."
           class="border border-blue-400 w-64 h-10 rounded pl-4 pr-4 mt-4 focus:shadow-outline">
-
+          <small
+          *ngIf="form.get('mat_no').touched && form.get('mat_no').hasError('required')"
+          class="text-red-600">
+          this field is required
+          </small>
+          <small
+          *ngIf="form.get('mat_no').hasError('maxlength')"
+          class="text-red-600">
+          the max length is 13 characters
+          </small>
+          <small
+          *ngIf="form.get('mat_no').hasError('minlength')"
+          class="text-red-600">
+          the min length is 13 characters
+          </small>
           <button
           class="w-64 bg-blue-600 rounded shadow h-10 text-white mt-4 focus:shadow-outline hover:bg-blue-500 active:bg-blue-800"
           (click)="submit()">
@@ -41,6 +57,8 @@
         </button>
         </form>
       </div>
+
     </div>
   </div>
+
 </div>

@@ -1,3 +1,79 @@
+
 <div class="parent">
-  <router-outlet></router-outlet>
+  <div class="sub-parent flex ">
+
+
+    <!-- first section -->
+
+    <div class="w-64 shadow-xl z-10 h-screen bg-blue-500">
+      <div class="bg-white  pt-4 w-auto pb-4">
+        <div class="img-box flex justify-center">
+            <img src="../../../assets/images/uniport.jpg" class="" alt="">
+        </div>
+        <div class="text-center font-raleway text-gray-600  mt-3">
+            Computer Science <br> E-clearance System
+          </div>
+      </div>
+
+      <div class="links w-auto">
+
+        <div class="flex  p-3 text-white font-raleway cursor-pointer border-b border-gray-200" [routerLink]="['/admin/list']" routerLinkActive="bg-blue-300 active ">
+          <div>
+            <img src="../../../assets/icons/users.svg" alt="">
+          </div>
+          <div class="pl-4 text-sm pt-1">
+            List of Students
+          </div>
+        </div>
+
+        <div class="flex p-3 text-white font-raleway cursor-pointer border-b border-white" [routerLink]="['/admin/upload']" routerLinkActive="bg-blue-300 active">
+          <div>
+            <img src="../../../assets/icons/upload.svg" class="fill-light" alt="">
+          </div>
+          <div class="pl-4 text-sm pt-1">
+            Upload new Students
+          </div>
+        </div>
+
+        <div class="flex p-3 text-white font-raleway cursor-pointer border-b border-white" [routerLink]="['/admin/cleared']" routerLinkActive="bg-blue-300 active">
+          <div>
+            <img src="../../../assets/icons/check-square.svg" class="fill-light" alt="">
+          </div>
+          <div class="pl-4 text-sm pt-1">
+            Cleared Students
+          </div>
+        </div>
+
+        <div class="flex p-3 text-white font-raleway cursor-pointer border-b border-white" [routerLink]="['/admin/paid']" routerLinkActive="bg-blue-300 active">
+          <div>
+            <img src="../../../assets/icons/credit-card.svg" class="fill-light" alt="">
+          </div>
+          <div class="pl-4 text-sm pt-1">
+            Payments
+          </div>
+        </div>
+
+        <div class="flex p-3 text-white font-raleway cursor-pointer border-b border-white" [routerLink]="['/admin/form']" routerLinkActive="bg-blue-300 active">
+          <div>
+            <img src="../../../assets/icons/file.svg" class="fill-light" alt="">
+          </div>
+          <div class="pl-4 text-sm pt-1">
+            Forms
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- second section -->
+    <div class="w-auto second h-screen bg-gray-300 right overflow-y-hidden">
+      <div class="navbar">
+          <app-navbar></app-navbar>
+      </div>
+      <div class="main-body overflow-y-auto pl-6">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+  </div>
 </div>

@@ -10,6 +10,17 @@ import { RegisterComponent } from './children/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListComponent } from './children/list/list.component';
+import { NavbarComponent } from './children/navbar/navbar.component';
+import { ClearedComponent } from './children/cleared/cleared.component';
+import { PaidComponent } from './children/paid/paid.component';
+import { FormComponent } from './children/form/form.component';
+import { TitleService } from './services/title.service';
+import { ClearedchipComponent } from './children/cleared/child/clearedchip/clearedchip.component';
+import { UploadrecordComponent } from './children/index/child/uploadrecord/uploadrecord.component';
+import { RecordComponent } from './children/index/child/record/record.component';
+import { RecordFormComponent } from './children/index/child/record-form/record-form.component';
+import { SingleRecordComponent } from './children/index/child/single-record/single-record.component';
 
 const routes: Routes = [
   {
@@ -18,22 +29,42 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'list',
         pathMatch: 'full'
       },
       {
-        path: 'dashboard',
+        path: 'upload',
         component: IndexComponent
       },
       {
-        path: 'auth',
-        component: AuthComponent
+        path: 'list',
+        component: RegisterComponent,
       },
       {
-        path: 'signup',
-        component: RegisterComponent,
-      }
+        path: 'cleared',
+        component: ClearedComponent,
+      },
+      {
+        path: 'paid',
+        component: PaidComponent
+      },
+      {
+        path: 'form',
+        component: FormComponent,
+      },
+      {
+        path: 'student/record/:user',
+        component: SingleRecordComponent
+      },
+      {
+        path: 'record',
+        component: RecordComponent,
+      },
     ],
+  },
+  {
+    path: 'auth',
+    component: AuthComponent,
   }
 ];
 
@@ -45,7 +76,17 @@ const routes: Routes = [
     IndexComponent,
     UploadstudentComponent,
     GraduantsComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListComponent,
+    NavbarComponent,
+    ClearedComponent,
+    PaidComponent,
+    FormComponent,
+    ClearedchipComponent,
+    UploadrecordComponent,
+    RecordComponent,
+    RecordFormComponent,
+    SingleRecordComponent,
   ],
   imports: [
     CommonModule,
@@ -56,6 +97,9 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    TitleService,
   ]
 })
 export class AdminModule { }

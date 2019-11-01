@@ -26,6 +26,7 @@ export class CheckComponent implements OnInit {
   searchString: FormGroup;
   data: IData = null;
   checking: boolean = null;
+  showCheckBox: boolean = true;
   constructor(private http: HttpClient, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -60,6 +61,7 @@ export class CheckComponent implements OnInit {
         this.checking = false;
         this.success = true;
         this.error = false;
+        this.showCheckBox = false;
         console.log(data.data);
         this.searchString.get('searchValue').patchValue('');
         this.searchString.updateValueAndValidity();
@@ -69,10 +71,17 @@ export class CheckComponent implements OnInit {
         this.checking = false;
         this.error = true;
         this.success = false;
+        this.showCheckBox = false;
       },
     );
     }
 
+  }
+
+  checkAgain(): void {
+    this.showCheckBox = true;
+    this.error = false;
+    this.success = false;
   }
 
 }
