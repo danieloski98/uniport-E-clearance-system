@@ -1,29 +1,36 @@
-import { Schema, Document } from 'mongoose';
+import { Schema, Document, model } from 'mongoose';
+import { boolean } from 'joi';
 
 export const UploadStudentSchema = new Schema({
-    fullname: {
-        type: String,
-        required: true,
-    },
-    mat_no: {
-        type: String,
-        required: true,
-        minlength: 13,
-        maxlength: 13,
-    },
-    department: {
-        type: String,
-        required: true,
-    },
-    faculty: {
-        type: String,
-        required: true,
-    },
+  fullname: {
+    type: String,
+    required: true,
+  },
+  mat_no: {
+    type: String,
+    required: true,
+    minlength: 13,
+    maxlength: 13,
+  },
+  step: {
+    type: Number,
+    default: 0,
+  },
+  cleared: {
+    type: Boolean,
+    default: false,
+  },
+  done: {
+    type: Boolean,
+    default: false,
+  }
 });
 
+
 export interface IUploadStudentModel extends Document {
-    fullname: string;
-    mat_no: string;
-    department: string;
-    faculty: string;
+  fullname: string;
+  mat_no: string;
+  step: number;
+  cleared: boolean;
+  done: boolean;
 }

@@ -3,9 +3,7 @@ import { MongooseModule as Mo } from '@nestjs/mongoose';
 import { UploadStudentSchema } from '../../models/student.model';
 
 @Module({
-    imports: [
-    ],
-    exports: [
-    ],
+  imports: [],
+  exports: [],
 })
 export class MyMongooseModule extends Mo {}
