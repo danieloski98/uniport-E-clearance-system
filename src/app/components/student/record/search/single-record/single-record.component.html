@@ -1,0 +1,19 @@
+<div class="parent pr-6 pt-2">
+    <div class="w-auto bg-white shadow rounded p-4 mt-6" *ngFor="let rec of records">
+     <div class="flex font-raleway">
+       <div>
+         Level: {{ rec.level }}
+       </div>
+       <div class="ml-16">
+         Semester: {{ rec.semester }}
+       </div>
+     </div>
+     <hr class="mt-2">
+     <div class="flex justify-between font-raleway text-gray-600 mt-4 border-b pb-2" *ngFor="let course of rec.courses">
+       <div class="text-left">Course title: {{ course.title }}</div>
+       <div class="text-left">Course code: {{ course.code }}</div>
+       <div class="text-left">Score: {{ course.score }}</div>
+       <div class="text-left">Grade: {{ course.grade }}</div>
+     </div>
+    </div>
+</div>

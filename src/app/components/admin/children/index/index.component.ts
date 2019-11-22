@@ -26,7 +26,7 @@ export class IndexComponent implements OnInit {
       mat_no: ['', [ Validators.required, Validators.maxLength(13), Validators.minLength(13)]],
       fullname: ['', [ Validators.required, Validators.minLength(8)]],
     });
-    this.title$.changeTitle('Upload new student');
+    this.title$.changeTitle('Upload student to the graduation list');
   }
 
   submit(): void {

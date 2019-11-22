@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './children/index/index.component';
 import { CheckComponent } from './children/check/check.component';
@@ -12,6 +11,8 @@ import { NavbarComponent } from './children/navbar/navbar.component';
 import { StateService } from '../../../services/state.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PaymentComponent } from './children/payment/payment.component';
+import { Angular4PaystackModule } from 'angular4-paystack';
 
 const routes: Routes = [
   {
@@ -21,26 +22,36 @@ const routes: Routes = [
       {
         path: '',
         component: CheckComponent
+      },
+      {
+        path: 'payment',
+        component: PaymentComponent
       }
     ]
+  },
+  {
+    path: 'record',
+    loadChildren: () => import('../record/record.module').then(mod => mod.RecordModule)
   }
 ];
 
 
 
 @NgModule({
-  declarations: [HomeComponent, IndexComponent,
+  declarations: [IndexComponent,
      CheckComponent, FacultyComponent, DepartmentComponent,
-    BulsaryComponent, SenateComponent, NavbarComponent],
+    BulsaryComponent, SenateComponent, NavbarComponent, PaymentComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    Angular4PaystackModule.forRoot('txxxksx')
   ],
   exports: [
-    RouterModule
+    RouterModule,
+    NavbarComponent
   ],
   providers: [
     StateService

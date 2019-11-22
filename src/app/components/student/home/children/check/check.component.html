@@ -1,9 +1,9 @@
-<div class="parent w-auto mt-16">
+<div class="parent w-auto pt-10">
 
   <!-- checkbox -->
 
   <div *ngIf="showCheckBox" class="flex flex-row justify-center">
-    <div class="container border border-blue-400 h-auto text-center py-8 rounded-lg">
+    <div class="container shadow bg-white h-auto text-center py-8 rounded">
       <p class="text-gray-600 font-poppins text-xl">Check Your name</p>
       <form [formGroup]="searchString" class="mt-4">
         <input type="text"  min="14" max="14" formControlName="searchValue" name="searchString" placeholder="enter your mat_no" class="h-10 p-4 w-auto rounded-l font-raleway w-68 border bg-gray-200 focus:outline-none" id="">
@@ -36,15 +36,20 @@
   <!-- error box-->
 
   <div *ngIf="error" class="flex flex-row justify-center">
-    <div class="flex flex-col container border border-red-600  h-auto py-4 text-center text-white w-64 rounded mt-2">
-        <div class="container  h-auto py-4 text-center text-gray-600 w-64 rounded-sm mt-2">
+    <div class="flex flex-col bg-white shadow  h-auto py-4 text-center text-white rounded mt-2">
+        <div class="container  h-auto py-4 text-center font-raleway text-gray-600 w-64 rounded-sm mt-2">
             Your name is not on the graduation list
             Please check with your course adviser
         </div>
-        <div>
+        <hr>
+        <div class="flex pl-4">
           <button
           (click)="checkAgain()"
-          class="mt-6 p-2 border border-red-600 hover:bg-red-600 cursor-pointer hover:text-white text-gray-600 rounded">Check again</button>
+          class="mt-6 p-2 bg-blue-500 hover:bg-red-600 cursor-pointer hover:text-white text-gray-100 rounded">Check again</button>
+
+          <button
+          [routerLink]="['/home/record']" routerLinkActive=""
+          class="mt-6 p-2 bg-blue-500 hover:bg-red-600 ml-4 cursor-pointer hover:text-white text-gray-100 rounded">View record</button>
         </div>
     </div>
   </div>
@@ -52,7 +57,7 @@
   <!-- success box -->
 
   <div  *ngIf="success" class="flex flex-row justify-center">
-    <div class="flex flex-col border border-blue-600 container w-64 rounded-lg mt-2 text-white">
+    <div class="flex flex-col bg-white shadow container w-64 rounded-lg mt-2 text-white">
 
         <div @success class="text-gray-600">
             <p class="ml-4 mt-4 mb-4">{{ data.fullname.toUpperCase() }}</p>
@@ -60,21 +65,23 @@
             <p class="ml-4 mt-4">Matriculation number: {{ data.mat_no.toUpperCase() }}</p>
           </div>
 
-          <div class="pl-4 mb-4 flex mt-4">
+          <hr class="mt-4">
+
+          <div class="pl-4 mb-4 flex mt-4 justify-between">
             <div>
                 <button
                 (click)="checkUser()"
-                class="w-auto p-2 rounded-sm shadow text-gray-600 border border-blue-600 hover:bg-blue-600 cursor-pointer hover:text-white rounded flex">
+                class="w-auto p-2 rounded-sm shadow text-gray-100 text-sm bg-blue-500 hover:bg-blue-600 cursor-pointer hover:text-white rounded flex">
                 <span>Proceed to next step</span>
                 <img src="../../../../../../assets/icons/arrow-right.svg" class="ml-2" alt="">
               </button>
             </div>
-              <div class="ml-1">
+              <div class="mr-4">
                   <button
-                  (click)="checkAgain()"
-                  class="flex p-2 border border-blue-400 hover:bg-blue-400 cursor-pointer hover:text-white text-gray-600 w-auto rounded ">
-                  <span>Check again</span>
-                  <img src="../../../../../../assets/icons/refresh-ccw.svg" class="ml-2" alt="">
+                  [routerLink]="['/home/record']"
+                  class="flex p-2 bg-blue-500 text-sm hover:bg-blue-400 cursor-pointer hover:text-white text-gray-100 w-auto rounded ">
+                  <span>View Record</span>
+                  <img src="../../../../../../assets/icons/file-text.svg" class="ml-2" alt="">
                 </button>
                 </div>
           </div>

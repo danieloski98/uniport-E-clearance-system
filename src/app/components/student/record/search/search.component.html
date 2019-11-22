@@ -1,0 +1,65 @@
+<div class="parent" [ngSwitch]="view">
+
+  <!-- search view -->
+  <div *ngSwitchCase="'search'">
+
+      <div class="flex justify-center">
+          <div class="w-68 rounded h-64 shadow bg-white font-raleway p-6">
+            <p class="text-center text-gray-600">Search with your matriculation number</p>
+            <div class="w-auto flex justify-center mt-10">
+              <form [formGroup]="search">
+                  <input type="text" formControlName="searchstr" placeholder="Enter mat_no"
+                  class="w-64 p-2 rounded border border-blue-400 focus:outline-none">
+              </form>
+            </div>
+            <div class="w-auto flex justify-center">
+              <button
+              (click)="searchUser()"
+              [disabled]="search.get('searchstr').invalid"
+              class="rounded focus:outline-none shadow bg-blue-500 text-gray-100 w-64 p-2 mt-2 hover:bg-blue-600">Search</button>
+            </div>
+            <div *ngIf="searching" class="flex justify-center pt-2">
+              <div class="w-64">
+                  <mat-progress-bar mode="buffer" color="primary"></mat-progress-bar>
+                  <p class="text-center text-gray-500">Searching...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  </div>
+
+  <!-- success page -->
+
+  <div *ngSwitchCase="'success'">
+
+    <div class="flex justify-center">
+
+        <div class="flex flex-col bg-white p-6 rounded shadow w-68">
+            <div class="flex justify-center">
+              <img src="../../../../../assets/images/rec.svg" width="200" alt="">
+            </div>
+            <h2 class="font-poppins text-center text-gray-600 mt-4"> Record Found for {{ search.get('searchstr').value }}</h2>
+            <div class="flex justify-center">
+              <button
+              (click)="toggleView('record')"
+              class="p-2 rounded shadow bg-blue-400 font-raleway w-64 text-white mt-4">View Record</button>
+            </div>
+          </div>
+
+    </div>
+
+  </div>
+
+  <!-- record page -->
+
+  <div *ngSwitchCase="'record'">
+
+      <button
+      (click)="toggleView('search')"
+      class="p-2 rounded bg-white border border-black font-raleway w-64 text-gray-600">Search</button>
+
+    <app-single-record [records]="records"></app-single-record>
+
+  </div>
+</div>

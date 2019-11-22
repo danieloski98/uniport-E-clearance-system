@@ -1,0 +1,24 @@
+<div class="parent pt-10">
+
+  <div class="flex justify-center">
+    <img src="../../../../../../assets/images/1734.jpg" width="400" alt="">
+  </div>
+
+  <div class="flex justify-center">
+
+    <angular4-paystack
+    [email]="'mailexample@mail.com'"
+    [amount]="5000000"
+    [ref]="reference"
+    [channels]="['bank']"
+    [class]="'btn btn-primary'"
+    (close)="paymentCancel()"
+    (callback)="paymentDone($event)"
+    >
+    <button class="p-2 rounded bg-blue-500 shadow mt-6">Pay </button>
+    </angular4-paystack>
+
+  </div>
+
+</div>
+

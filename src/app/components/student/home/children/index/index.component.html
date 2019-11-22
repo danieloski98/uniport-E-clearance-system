@@ -1,3 +1,8 @@
-<div class="parent w-screen " style="font-family:  'Poppins', sans-serif">
-  <app-navbar></app-navbar>
+<div class="parent w-screen">
+  <div class="z-30">
+      <app-navbar></app-navbar>
+  </div>
+  <div class="main-body w-auto bg-gray-200 z-10">
+    <router-outlet></router-outlet>
+  </div>
 </div>
